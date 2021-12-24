@@ -1,0 +1,3 @@
+rootProject.name = 'KMT_Seminarprojekt'
+include 'calc-service'
+
