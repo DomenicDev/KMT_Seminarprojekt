@@ -1,3 +1,17 @@
 rootProject.name = 'KMT_Seminarprojekt'
 include 'calc-service'
+include 'eureka'
+include 'service-b'
+include 'config-server'
+
+
+// SERVICE DISCOVERY
+project(":eureka").projectDir = file('discovery-server/eureka')
+
+// MICROSERVICES
+project(":calc-service").projectDir = file('microservices/calc-service')
+project(':service-b').projectDir = file('microservices/service-b')
+
+// CONFIG SERVER
+project(':config-server').projectDir = file('config/config-server')
 
