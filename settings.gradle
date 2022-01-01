@@ -3,6 +3,7 @@ include 'calc-service'
 include 'eureka'
 include 'service-b'
 include 'config-server'
+include 'api-gateway'
 
 
 // SERVICE DISCOVERY
@@ -14,4 +15,7 @@ project(':service-b').projectDir = file('microservices/service-b')
 
 // CONFIG SERVER
 project(':config-server').projectDir = file('config/config-server')
+
+// GATEWAY
+project(':api-gateway').projectDir = file('gateway/api-gateway')
 
