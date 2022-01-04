@@ -1,3 +1,18 @@
+server:
+  port: 8877
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: service-a
+          uri: lb://calculator-service
+          predicates:
+            - Path=/service-a/**
+          filters:
+            - StripPrefix=1
+            - name: Retry
+              args:
+                retries: 3

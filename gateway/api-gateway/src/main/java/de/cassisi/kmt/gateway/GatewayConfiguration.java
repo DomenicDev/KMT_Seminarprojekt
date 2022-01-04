@@ -5,7 +5,7 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class GatewayConfiguration {
 
     @Bean
@@ -17,6 +17,5 @@ public class GatewayConfiguration {
                         .uri("lb://calculator-service"))
                 .build();
     }
-
 
 }

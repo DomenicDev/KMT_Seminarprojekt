@@ -4,9 +4,7 @@ spring:
   application:
     name: calculator-service
   config:
-    import: optional:configserver:http://localhost:8081
-  profiles:
-    active: development
+    import: optional:configserver:http://localhost:8444
 eureka:
   instance:
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}

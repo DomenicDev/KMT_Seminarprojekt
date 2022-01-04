@@ -1,27 +1,26 @@
 package de.cassisi.kmt.serviceb;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @RestController
 public class SomeService {
 
-    private final RestTemplate restTemplate;
+    private final WebClient.Builder builder;
 
-    public SomeService(@LoadBalanced RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public SomeService(WebClient.Builder builder) {
+        this.builder = builder;
     }
 
     @GetMapping("/call")
-    public ResponseEntity<String> test() {
-        UriComponentsBuilder builder = UriComponentsBuilder
-                .fromHttpUrl("http://calculator-service/");
-        return restTemplate.getForEntity(builder.toUriString(), String.class);
+    public Mono<String> callMe() {
+        return builder
+                .build()
+                .get()
+                .uri("http://calculator-service/")
+                .retrieve()
+                .bodyToMono(String.class);
     }
 }
