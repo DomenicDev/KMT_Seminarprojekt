@@ -7,12 +7,32 @@ spring:
     gateway:
       enabled: true
       routes:
-        - id: service-a
-          uri: lb://calculator-service
+        - id: location-service
+          uri: lb://location-service
           predicates:
-            - Path=/service-a/**
+            - Path=/location/**
+          filters:
+            - name: Retry
+              args:
+                retries: 3
+        - id: astronomical-object-service
+          uri: lb://astronomical-object-service
+          predicates:
+            - Path=/astronomical/**
           filters:
             - StripPrefix=1
             - name: Retry
               args:
                 retries: 3
+        - id: location-service
+          uri: lb://forecast-service
+          predicates:
+            - Path=/forecast/**
+          filters:
+            - StripPrefix=1
+            - name: Retry
+              args:
+                retries: 3
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5
