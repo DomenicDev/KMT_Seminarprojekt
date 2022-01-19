@@ -48,8 +48,7 @@ public class ForecastController {
         double latitude = loc.getLatitude();
         double longitude = loc.getLongitude();
 
-        // calc() ...
-
+        // for now, we just include all objects...
         double decMin = 0;
         double decMax = 90;
         double recMin = 0;

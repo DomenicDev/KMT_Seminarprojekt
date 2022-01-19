@@ -9,6 +9,4 @@ public class AstronomicalObjectDTO {
     private double declination;
     private double rightAscension;
 
-
-
 }

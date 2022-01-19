@@ -1,7 +1,5 @@
 rootProject.name = 'KMT_Seminarprojekt'
-include 'calc-service'
 include 'eureka'
-include 'service-b'
 include 'config-server'
 include 'api-gateway'
 include 'astronomical-object-service'
@@ -13,8 +11,6 @@ include 'forecast-service'
 project(":eureka").projectDir = file('discovery-server/eureka')
 
 // MICROSERVICES
-project(":calc-service").projectDir = file('microservices/calc-service')
-project(':service-b').projectDir = file('microservices/service-b')
 project(':astronomical-object-service').projectDir = file('microservices/astronomical-object-service')
 project(':location-service').projectDir = file('microservices/location-service')
 project(':forecast-service').projectDir = file('microservices/forecast-service')
