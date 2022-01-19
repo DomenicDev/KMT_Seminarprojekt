@@ -3,16 +3,5 @@ server:
 spring:
   application:
     name: astronomical-object-service
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    url: jdbc:mysql://localhost:6677/astronomical
-    password: example
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5Dialect
-    hibernate:
-      ddl-auto: update
-
-eureka:
-  instance:
-    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+  config:
+    import: configserver:http://localhost:8444
